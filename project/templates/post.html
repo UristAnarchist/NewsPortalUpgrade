@@ -1,0 +1,23 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+
+{% block title %}
+Post
+{% endblock title %}
+
+{% block content %}
+Хотите
+<a href='http://127.0.0.1:8000/news/{{post.id}}/update'>изменить</a>
+или
+<a href='http://127.0.0.1:8000/news/{{post.id}}/delete'>удалить</a>
+?
+<h1>{{ post.name|censor }}</h1>
+<hr>
+{{ post.date|date:'d.M.Y' }}
+{{ post.date|time:'H:i' }}
+(Категория:{{ post.category.name }})
+<hr>
+{{ post.text|censor }}
+{% endblock content %}
